@@ -267,8 +267,21 @@ div.desc {
 
 .btn:hover {background-color: #3B5998;}
 
+.content-title {
+  text-align: center;
+  padding-top: 20px;
+}
 
-
+.content-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  text-align: center;
+  font-size: 17px;
+  padding-bottom: 20px;
+}
 /*FOOTER*/
 .footer {
   overflow: hidden;
