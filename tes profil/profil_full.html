@@ -103,35 +103,136 @@
     font-size: 20px;
     text-align: center;
     }
+
+    .Pegawai{
+      text-align: center;
+        font-size: 24px; 
+    }
     
-    .caption-container {
-    text-align: center;
-    background-color: #222;
-    padding: 2px 16px;
-    color: white;
-    }
+    /* Container for image text */
+  .caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+  }
 
-    .row:after {
-    content: "";
-    display: table;
-    clear: both;
-    }
+  .row:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
 
-/* Six columns side by side */
-    .column {
-    float: left;
-    width: 16.66%;
-    }
+  /* Six columns side by side */
+  .column {
+  float: left;
+  width: 16.66%;
+  }
 
-/* Add a transparency effect for thumnbail images */
-    .demo {
-    opacity: 0.6;
-    }
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+  opacity: 0.6;
+  }
 
-    .active,
-    .demo:hover {
-    opacity: 1;
-    }
+  .active,
+  .demo:hover {
+  opacity: 1;
+  }
+
+  /*FOOTER*/
+  .footer {
+  overflow: hidden;
+  background-color: #8994d2;
+  padding: 20px 10px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  }
+
+  /* Style the header links */
+  .footer a {
+  float: left;
+  color: black;
+  display: block;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  }
+
+/* Change the background color on mouse-over */
+.footer a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active/current link*/
+.footer a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Float the link section to the right */
+.other {
+  float: right;
+}
+
+.infosekolah {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .footer a, .footer input[type=text] {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .header input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+
+/* Style all font awesome icons */
+.fa {
+  width: 50px;
+  background-color: #8994d2;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+/*Youtube*/
+.fa-youtube {
+  background: #b62417;
+  color: white;
+}
+
+/*Instagram*/
+.fa-instagram {
+  background: #eea155;
+  color: white;
+}
+
+
     </style>
 </head>
 <body>
@@ -157,68 +258,105 @@
 
 <div class="Visi">
     <h2>Visi Sekolah</h2>
-    <div class="text">Isi visi</div>
+    <div class="text">Menjadi pusat pendidikan unggul yang menghasilkan
+       generasi penerus yang berintegritas, berdaya saing, dan berwawasan global</div>
     <br>
     </div>
 
 <div class="Misi">
     <h2>Misi Sekolah</h2>
     <ul>
-        <li><div class="text">Isi Misi</div></li>
-        <li><div class="text">Isi Misi</div></li>
-        <li><div class="text">Isi Misi</div></li>
+        <li><div class="text">Memberikan pendidikan berkualitas yang merangkul keberagaman 
+          dan memperkuat potensi setiap individu.</div><br></li>
+        <li><div class="text">Mendorong pembelajaran inovatif dan kreatif yang mempersiapkan 
+          siswa untuk menghadapi tantangan masa depan.</div><br></li>
+        <li><div class="text">Menanamkan nilai-nilai etika, tanggung jawab sosial, 
+          dan kepemimpinan yang berkelanjutan dalam setiap aspek kehidupan siswa.</div><br></li>
         <!-- Tambahkan item lainnya di sini -->
       </ul>
     <br>
     </div>      
 
-<div class="Staff">
-    <h2>Staff dan Guru</h2>    
-    <div class="Guru">
-        <div class="numbertext">1 / 6</div>
-        <img src=https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/guru1.png style="width:100%" class="center">
+<div class="Pegawai">
+  <h2>Staff dan Guru</h2><br></div>
+
+<div class="Staff Guru">    
+    <div class="row">
+      <div class="column">
+        <div class="Guru">
+        <img class="demo cursor" src= Guru1.png style="width:100%" onclick="currentSlide(1)" alt="Pak Guru">
+        </div>  
       </div>
-      <div class="Guru">
-        <div class="numbertext">2 / 6</div>
-        <img src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes profil\guru1.jpg" style="width:100%" class="center">
+      <div class="column">
+        <div class="Guru">
+        <img class="demo cursor" src= Guru2.png style="width:100%" onclick="currentSlide(2)" alt="Bu Guru">
+        </div>  
       </div>
-      <div class="Guru">
-        <div class="numbertext">3 / 6</div>
-        <img src=https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/guru1.png style="width:100%" class="center">
+      <div class="column">
+        <div class="Guru">
+        <img class="demo cursor" src= Guru4.png style="width:100%" onclick="currentSlide(3)" alt="Pak Guru">
+        </div>  
       </div>
-      <div class="Guru">
-        <div class="numbertext">4 / 6</div>
-        <img src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\Main 1.png" style="width:100%" class="center">
+      <div class="column">
+        <div class="Guru">
+        <img class="demo cursor" src= Guru3.png style="width:100%" onclick="currentSlide(4)" alt="Bu Guru">
+        </div>  
       </div>
-    <div class="Staff">
-        <div class="numbertext">5 / 6</div>
-        <img src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\Main 1.png" style="width:100%" class="center">
+      <div class="column">
+        <div class="Guru">
+        <img class="demo cursor" src= Guru1.png style="width:100%" onclick="currentSlide(5)" alt="Pak Guru">
+        </div>  
       </div>
-      <div class="Staff">
-        <div class="numbertext">6 / 6</div>
-        <img src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\Main 1.png" style="width:100%" class="center">
+      <div class="column">
+        <div class="Guru">
+        <img class="demo cursor" src= Guru2.png style="width:100%" onclick="currentSlide(6)" alt="Bu Guru">
+        </div>  
       </div>
+
+      <div class="column">
+        <div class="Staff">
+        <img class="demo cursor" src= Guru1.png style="width:100%" onclick="currentSlide(7)" alt="Pak Guru">
+        </div>  
+      </div>
+      <div class="column">
+        <div class="Staff">
+        <img class="demo cursor" src= Guru2.png style="width:100%" onclick="currentSlide(8)" alt="Bu Guru">
+        </div>  
+      </div>
+
+    </div>
     </div>
 
-<div class="row">
-    <div class="column">
-      <img class="demo cursor" src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes profil\guru1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Dr.Agus .S.K.">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes profil\guru1.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\Main 3.png" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\Main 4.png" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\Berita 1.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
-    </div>    
-    <div class="column">
-      <img class="demo cursor" src="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\Berita 2.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
-    </div>
+  </div>
+    <br>
+    
+  <div class="footer">
+	  <a href="#default" class="logo">
+			<img src=Logo.png height="60"/>
+		</a>
+		<div class="other">
+			<a href="#Galeri">Galeri</a>
+			<a href="#">Tentang</a>
+		</div>
+		<div class="infosekolah">
+		  Jl. Ahmad Dahlan, Kec. Sendang Agung, 
+			<br>Kab. Lampung Tengah, Lampung 34174
+			<br>0821-1234-5678
+			<br>emailsekolah@email.com
+			<br><br>
+		</div>
+
+		<div class="socialmedia">
+			<a href="#" class="fa fa-facebook"></a>
+			<a href="#" class="fa fa-twitter"></a>
+			<a href="#" class="fa fa-youtube"></a>
+			<a href="#" class="fa fa-instagram"></a>
+		</div>
+		</div>
+
+      
+  </body>
+  </html>
 
 <script>
     let slideIndex = 1;
