@@ -3,130 +3,199 @@
 <head>
 	<meta charset="utf-8">  
 	<title>School Website</title>
-	<link rel="stylesheet" type="text/css" href="C:\Users\HP\Documents\tugas\sem 4\Program Web\tes web\tes galeri\galeri_script.js">
+	<link rel="stylesheet" type="text/css" href="galeri_style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .row-galeri {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  margin: 50px;
+  border-color: gray solid 1px ;
+}
 
-  <!--ini css-->
-  <link rel="stylesheet" href="galeri_style.css">
+/* Create four equal columns that sits next to each other */
+.column-galeri {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column-galeri img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column-galeri {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column-galeri {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+    /* CSS for overlay */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Opacity layer */
+        z-index: 999; /* Ensure it's above other content */
+        display: none; /* Hide by default */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    /* CSS for zoomed image */
+    .zoomed-image {
+        max-width: 80%; /* Limit maximum width of zoomed image */
+        max-height: 80%; /* Limit maximum height of zoomed image */
+        transition: transform 0.3s ease-in-out; /* Add transition */
+        align-content: center;
+    }
+
+    /* CSS for modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    align-content: center;
+    position: relative; /* Set to relative */
+    text-align: center; /* Center text horizontally */
+    }
+
+    /* Close button */
+    .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+        }
+
+  </style>
+
 </head>
-
-
 <body>
 	<div class="header">
 		<a href="#default" class="logo">
-			<img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Logo.png?raw=true" height="40"/>
+			<img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Logo.png?raw=true" height="40"/>
 		</a>
 		<div class="header-right">
-		  <a class="active" href="Halaman Utama.html">Beranda</a>
-		  <a href="Halaman Profil.html">Profil</a>
-		  <a href="Halaman Berita.html">Berita</a>
+		  <a href="Halaman Utama.html">Beranda</a>
+		  <a href="#profil">Profil</a>
+		  <a  href="Halaman Berita.html">Berita</a>
 		  <a href="Halaman Pendaftaran.html">Pendaftaran</a>
-		  <a href="Halaman Galeri.html">Galeri</a>
+		  <a class="active" href="#galeri">Galeri</a>
 		  <input type="text" placeholder="Pencarian..">
 		</div>
+	  </div>
+
+    <div id="myModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+        <img id="modalImage" class="zoomed-image">
+        <div id="imageDescription" class="image-description"></div> <!-- Element for image description -->
+      </div>
+    </div>
+    
+    
 	 
 	<div class="main">
-        	
+    <h1 class="title">Galeri</h1>
+    <div class="overlay" onclick="closeZoomedImage()"></div>
+    <div class="row-galeri">
+      <div class="column-galeri">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%202.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%203.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%202.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%203.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Guru%203.png?raw=true" onclick="zoomImage(this)">
+      </div>
+      <div class="column-galeri">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Guru%202.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Guru%201.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%204.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%203.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%202.png?raw=true" onclick="zoomImage(this)">
+      </div>
+      <div class="column-galeri">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%202.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%203.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%202.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%203.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Guru%203.png?raw=true" onclick="zoomImage(this)">
+      </div>
+      <div class="column-galeri">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%202.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%203.png?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%202.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%203.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg?raw=true" onclick="zoomImage(this)">
+        <img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Guru%203.png?raw=true" onclick="zoomImage(this)">
+      </div>
+    </div>
 	</div>
-  <br>
+    <br>
 
-  <!-- Full-width images with number text -->
-  <div class="mySlides">
-    <div class="numbertext">1 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%201.png" style="width:100%" class="center">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">2 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%202.png" style="width:100%" class="center">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">3 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%203.png" style="width:100%" class="center">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">4 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/main%204.png" style="width:100%" class="center">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">5 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg" style="width:100%" class="center">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">6 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%202.jpg" style="width:100%" class="center">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">7 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%203.jpg" style="width:100%" class="center">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">8 / 8</div>
-    <img src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%204.jpg" style="width:100%" class="center">
-  </div>
-
-  <!-- Masukkan div mySlides lainnya di sini -->
-
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-  <!-- Image text -->
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
-  <!--vw = view width vh = view height-->>
-  <!-- Thumbnail images -->
-  <div class="row">
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%201.png" width="200" height="100" onclick="currentSlide(1)" alt="Gedung Sekolah">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%202.png" width="200" height="100" onclick="currentSlide(2)" alt="Kegiatan Belajar Mengajar">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%201.png" width="200" height="100" onclick="currentSlide(3)" alt="Perpustakaan">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Main%201.png" width="200" height="100" onclick="currentSlide(4)" alt="Menuju Indonesia Emas">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%201.jpg" width="200" height="100" onclick="currentSlide(5)" alt="Workshop">
-    </div>    
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%202.jpg" width="200" height="100" onclick="currentSlide(6)" alt="Kejuaraan Atletik">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%203.jpg" width="200" height="100" onclick="currentSlide(7)" alt="Pengumuman">
-    </div>    
-    <div class="column">
-      <img class="demo cursor" src= "https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Berita%204.jpg" width="200" height="100" onclick="currentSlide(8)" alt="Pendaftaran">
-    </div>
-  </div>
-
-  <div class="footer">
-	  <a href="#default" class="logo">
-			<img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Logo.png?raw=true" height="60"/>
+    <div class="footer">
+		<a href="#default" class="logo">
+			<img src="https://github.com/farisIH/Website-SMA-Muhammadiyah-1-Sendang-Agung/blob/main/Gambar/Logo.png?raw=true" height="60"/>
 		</a>
 		<div class="other">
-			<a href="#Galeri">Galeri</a>
-			<a href="#">Tentang</a>
-		</div>
-		<div class="infosekolah">
-		  Jl. Ahmad Dahlan, Kec. Sendang Agung, 
+				<a href="#Galeri">Galeri</a>
+				<a href="#">Tentang</a>
+			</div>
+			<div class="infosekolah">
+			Jl. Ahmad Dahlan, Kec. Sendang Agung, 
 			<br>Kab. Lampung Tengah, Lampung 34174
 			<br>0821-1234-5678
 			<br>emailsekolah@email.com
 			<br><br>
-		</div>
+			</div>
 
-		<div class="socialmedia">
+			<div class="socialmedia">
 			<a href="#" class="fa fa-facebook"></a>
 			<a href="#" class="fa fa-twitter"></a>
 			<a href="#" class="fa fa-youtube"></a>
@@ -134,7 +203,47 @@
 		</div>
 		</div>
 	
-  <script src="galeri_script.js"></script>  
+    <script>
+      var lastZoomedImage = null; // Variable to store the last zoomed image
+      var modal = document.getElementById("myModal");
+      var modalImg = document.getElementById("modalImage");
+
+      function zoomImage(img) {
+          if (lastZoomedImage !== null && lastZoomedImage !== img) {
+              lastZoomedImage.style.transform = "scale(1)";
+              modal.style.display = "block";
+              modalImg.src = img.src;
+          }
+          
+        var overlay = document.querySelector('.overlay');
+        overlay.style.display = "flex"; // Show overlay
+
+          if (img.style.transform === "scale(2)") {
+              img.style.transform = "scale(1)";
+              lastZoomedImage = null; // Reset lastZoomedImage when the image is unzoomed
+              overlay.style.display = "none"; // Hide overlay
+          } else {
+              img.style.transform = "scale(2)";
+              lastZoomedImage = img;
+          }
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+        var overlay = document.querySelector('.overlay');
+        overlay.style.display = "none"; // Hide overlay when modal is closed
+        }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+    }
+    var overlay = document.querySelector('.overlay');
+    overlay.addEventListener('click', closeModal); // Close modal when overlay is clicked
+
+  </script>
+  
 		
 </body>
 </html>
