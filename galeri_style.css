@@ -65,6 +65,27 @@
   
   * {box-sizing:border-box}
 
+    /* CSS for overlay */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Opacity layer */
+        z-index: 999; /* Ensure it's above other content */
+        display: none; /* Hide by default */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    /* CSS for zoomed image */
+    .zoomed-image {
+        max-width: 80%; /* Limit maximum width of zoomed image */
+        max-height: 80%; /* Limit maximum height of zoomed image */
+        transition: transform 0.3s ease-in-out; /* Add transition for smooth zoom effect */
+    }
+  
 /* Slideshow container */
 .slideshow-container {
   position: relative;
@@ -156,95 +177,96 @@
   opacity: 1;
 }
 
-/*FOOTER*/
-.footer {
-  overflow: hidden;
-  background-color: #8994d2;
-  padding: 20px 10px;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-}
-
-/* Style the header links */
-.footer a {
-  float: left;
-  color: black;
-  display: block;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-}
-
-/* Change the background color on mouse-over */
-.footer a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Style the active/current link*/
-.footer a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
-/* Float the link section to the right */
-.other {
-  float: right;
-}
-
-.infosekolah {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-@media screen and (max-width: 600px) {
-  .footer a, .footer input[type=text] {
-    float: none;
-    display: block;
+  /*FOOTER*/
+  .footer {
+    overflow: hidden;
+    background-color: #8994d2;
+    padding: 20px 10px;
     width: 100%;
-    margin: 0;
-    padding: 14px;
+    left: 0;
+    bottom: 0;
+    }
+  
+    /* Style the header links */
+    .footer a {
+    float: left;
+    color: black;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    }
+  
+  /* Change the background color on mouse-over */
+  .footer a:hover {
+    background-color: #ddd;
+    color: black;
   }
-  .header input[type=text] {
-    border: 1px solid #ccc;
+  
+  /* Style the active/current link*/
+  .footer a.active {
+    background-color: dodgerblue;
+    color: white;
   }
-}
-
-
-/* Style all font awesome icons */
-.fa {
-  width: 50px;
-  background-color: #8994d2;
-}
-
-/* Set a specific color for each brand */
-
-/* Facebook */
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-/* Twitter */
-.fa-twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-/*Youtube*/
-.fa-youtube {
-  background: #b62417;
-  color: white;
-}
-
-/*Instagram*/
-.fa-instagram {
-  background: #eea155;
-  color: white;
-}
+  
+  /* Float the link section to the right */
+  .other {
+    float: right;
+  }
+  
+  .infosekolah {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+  @media screen and (max-width: 600px) {
+    .footer a, .footer input[type=text] {
+      float: none;
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .header input[type=text] {
+      border: 1px solid #ccc;
+    }
+  }
+  
+  
+  /* Style all font awesome icons */
+  .fa {
+    width: 50px;
+    background-color: #8994d2;
+  }
+  
+  /* Set a specific color for each brand */
+  
+  /* Facebook */
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  /* Twitter */
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  /*Youtube*/
+  .fa-youtube {
+    background: #b62417;
+    color: white;
+  }
+  
+  /*Instagram*/
+  .fa-instagram {
+    background: #eea155;
+    color: white;
+  }
+  
