@@ -63,6 +63,7 @@
 	  <div class="clearfix"></div>		
 	</div>
     <br>
+    <div id="newsContainer"></div>
 
     <div class="footer">
 		<a href="#default" class="logo">
@@ -70,7 +71,7 @@
 		</a>
 		<div class="other">
 				<a href="Halaman Galeri.html">Galeri</a>
-				<a href="#">Tentang</a>
+				<a href="#">Tentang</a>	
 			</div>
 			<div class="infosekolah">
 			Jl. Ahmad Dahlan, Kec. Sendang Agung, 
@@ -82,12 +83,74 @@
 
 			<div class="socialmedia">
 			<a href="#" class="fa fa-facebook"></a>
-			<a href="#" class="fa fa-twitter"></a>
+			<a href="#" class="fa fa-twitter"></a>	
 			<a href="#" class="fa fa-youtube"></a>
 			<a href="#" class="fa fa-instagram"></a>
 		</div>
 		</div>
 	
-		
+		<script>
+			fetch('http://127.0.0.1:5500/news.xml')
+				.then(response => response.text())
+				.then(data => {
+					const parser = new DOMParser();
+					const xml = parser.parseFromString(data, 'application/xml');
+					const articles = xml.querySelectorAll('article');
+					const dataArray = [];
+	
+					articles.forEach(article => {
+						const title = article.querySelector('title').textContent;
+						const link = article.querySelector('link').textContent;
+						const description = article.querySelector('description').textContent;
+						const image = article.querySelector('image').getAttribute('src');
+	
+						dataArray.push({
+							title: title,
+							link: link,
+							description: description,
+							image: image
+						});
+					});
+	
+					createNewsElements(dataArray);
+				})
+				.catch(error => {
+					console.error('Error fetching data:', error);
+				});
+				function createNewsElements(dataArray) {
+            const newsContainer = document.getElementById("newsContainer");
+
+            dataArray.forEach(data => {
+                const divResponsive = document.createElement("div");
+                divResponsive.className = "responsive";
+
+                const divBerita = document.createElement("div");
+                divBerita.className = "berita";
+
+                const a = document.createElement("a");
+                a.target = "_blank";
+                a.href = data.link;
+
+                const img = document.createElement("img");
+                img.src = data.image;
+                img.alt = data.title;
+
+				const divTitle = document.createElement("div"); // create a div element for the title
+                divTitle.textContent = data.title; // set the text content to the title from XML
+
+                const divDesc = document.createElement("div");
+                divDesc.className = "desc";
+                divDesc.textContent = data.description;
+
+                a.appendChild(img);
+                divBerita.appendChild(a);
+                divBerita.appendChild(divDesc);
+                divResponsive.appendChild(divBerita);
+
+                newsContainer.appendChild(divResponsive);
+            });
+        }
+		</script>
+        
 </body>
 </html>
